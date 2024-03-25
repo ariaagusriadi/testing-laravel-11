@@ -9,9 +9,13 @@ class PostController extends Controller
 {
 
     public function index(){
-        return view('welcome', [
+        return view('post.index', [
             'posts' => Post::all()
         ]);
+    }
+
+    public function create(){
+        return view('post.create');
     }
 
     public function store(){
@@ -21,6 +25,6 @@ class PostController extends Controller
          $post->body = request('body');
          $post->save();
 
-         return back();
+         return redirect("/");
     }
 }
